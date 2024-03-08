@@ -39,8 +39,6 @@
     height: 100%;
   }
   .paragrafos {
-    position: fixed;
-    top: 86%;
   }
   .headerContainer {
     padding-left: 1rem;
@@ -65,7 +63,6 @@
   .paragrafo {
     font-size: 0.9rem;
     margin-top: 1rem;
-    margin-bottom: -0.3rem;
     width: 100%;
     font-weight: 300;
     padding-right: 1rem;
