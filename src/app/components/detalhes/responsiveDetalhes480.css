@@ -6,6 +6,7 @@
     flex-direction: column;
     width: 95%;
     height: 80%;
+    box-shadow: 4px 4px 4px 4px #00000040;
     background-color: rgb(0, 0, 0);
     margin: auto;
     position: absolute;
