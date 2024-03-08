@@ -113,29 +113,20 @@
   .buttonDiv {
     padding: 2rem;
   }
-  .h1 {
-    width: 20rem;
+  .h1,
+  .h2 {
+    width: 20rem; /* or 18rem for .h2 */
     background-color: black;
     color: white;
     position: relative;
-    top: -75%;
-    left: -95%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     font-size: 2rem;
     padding: 0.7rem;
-    margin-bottom: 0;
+    margin: 0;
   }
-  .h2 {
-    width: 18rem;
-    background-color: black;
-    color: white;
-    position: relative;
-    top: -75%;
-    left: -95%;
-    font-size: 2rem;
-    padding: 0.7rem;
-    margin-top: 0;
-  }
+
   .blackLine {
     width: 100vw;
     background-color: black;
