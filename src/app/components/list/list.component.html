@@ -10,6 +10,9 @@
     <h2 class="pesquisa">Pesquise e filtre esta página</h2>
     <form class="formWrapper" #filterForm="ngForm" (ngSubmit)="buscarPessoas()">
       <mat-form-field class="formField">
+        <input matInput placeholder="Nome" [(ngModel)]="nome" name="nome" />
+      </mat-form-field>
+      <mat-form-field class="formField">
         <input
           matInput
           placeholder="Idade Inicial"
@@ -27,9 +30,6 @@
         />
       </mat-form-field>
 
-      <mat-form-field class="formField">
-        <input matInput placeholder="Nome" [(ngModel)]="nome" name="nome" />
-      </mat-form-field>
       <div class="checkBoxContainer">
         <mat-checkbox
           class="checkBox"
@@ -77,11 +77,11 @@
           />
         </div>
         <div class="textHolder">
-          <h3 class="textNome">{{ item.nome }}</h3>
-          <h4 class="textInfo">
+          <p class="textNome">{{ item.nome }}</p>
+          <p class="textInfo">
             {{ item.idade }} |
             {{ item.ultimaOcorrencia.localDesaparecimentoConcat }}
-          </h4>
+          </p>
         </div>
       </button>
     </div>

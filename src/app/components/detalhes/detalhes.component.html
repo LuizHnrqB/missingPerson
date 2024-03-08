@@ -15,26 +15,27 @@
       />
     </div>
     <div class="headerContainer">
-      <h1 style="color: #4eaafe; font-weight: 600; font-size: 2rem">
+      <p class="nome" style="color: #4eaafe; font-weight: 600">
         {{ idData.nome }}
-      </h1>
-      <h2 style="font-weight: 500; font-size: 1rem">
+      </p>
+      <p class="subTitle" style="font-weight: 500; margin-top: -1rem">
         {{ idData.idade }} / {{ idData.sexo }}
-      </h2>
-      <h3 style="font-weight: 500; font-size: 1rem">
+      </p>
+      <p class="subTitle" style="font-weight: 500">
         Visto pela ultima vez em:
         {{ idData.ultimaOcorrencia.localDesaparecimentoConcat }}
-      </h3>
-      <h4>
-        No dia:
+      </p>
+      <p class="subTitle">
+        Data:
         {{ idData.ultimaOcorrencia.dtDesaparecimento | date : "dd/MM/yyyy" }}
-      </h4>
+      </p>
 
-      <div>
-        <h1 style="font-weight: 500; font-size: 1rem">
+      <div class="shareButton">
+        <h1 class="subTitle" style="font-weight: 300">
           Ajude a encontrar essa pessoa:
         </h1>
         <share-buttons
+          class="shareButton"
           theme="modern-dark"
           [include]="['facebook', 'reddit', 'twitter', 'whatsapp']"
           [showIcon]="true"
@@ -50,9 +51,13 @@
         </share-buttons>
       </div>
       <p class="paragrafo">
-        Sabe onde esta pessoa está?<b> Avise a Polícia Judiciária Civil</b>
+        Sabe onde esta {{ primeiroNome }} está?<b>
+          Avise a Polícia Judiciária Civil</b
+        >
       </p>
-      <p>(65) 3613-5656 / 3613-5667 / 3613-5698 / 3613-5647</p>
+      <p class="paragrafo2">
+        (65) 3613-5656 / 3613-5667 / 3613-5698 / 3613-5647
+      </p>
     </div>
   </div>
   <div class="buttonContainer">

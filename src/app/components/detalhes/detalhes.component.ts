@@ -14,6 +14,8 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./detalhes.component.css'],
 })
 export class DetalhesComponent implements OnInit {
+  nomeCompleto: string = '';
+  primeiroNome: string = '';
   itemId: string = '';
   idData: any;
   constructor(
@@ -31,6 +33,8 @@ export class DetalhesComponent implements OnInit {
   getDatabyID(id: any) {
     this.api.getPessoaByID(id).subscribe((response) => {
       this.idData = response;
+      this.nomeCompleto = this.idData.nome;
+      this.primeiroNome = this.nomeCompleto.split(' ')[0];
     });
   }
   voltarHome() {
