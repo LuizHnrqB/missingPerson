@@ -101,15 +101,8 @@ export class ListComponent {
     this.buscarPessoas();
   }
   setPagina(page: number): void {
-    let OldPagina = this.pagina;
     this.pagina = page;
     this.buscarPessoas();
-    if (!this.data.length) {
-      page = OldPagina;
-      this.pagina = OldPagina;
-      console.log(this.pagina);
-      this.buscarPessoas();
-    }
   }
   buscarPessoas(): void {
     this.api
