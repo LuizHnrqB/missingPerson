@@ -11,7 +11,11 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [CommonModule, ShareButtonsModule, ShareIconsModule, MatIconModule],
   templateUrl: './detalhes.component.html',
-  styleUrls: ['./detalhes.component.css', './responsiveDetalhes.css'],
+  styleUrls: [
+    './detalhes.component.css',
+    './responsiveDetalhes480.css',
+    './responsiveDetalhes1024.css',
+  ],
 })
 export class DetalhesComponent implements OnInit {
   nomeCompleto: string = '';

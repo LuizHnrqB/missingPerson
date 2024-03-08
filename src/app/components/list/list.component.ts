@@ -28,7 +28,11 @@ import { Router } from '@angular/router';
     NgOptimizedImage,
   ],
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css', './responsiveList.css'],
+  styleUrls: [
+    './list.component.css',
+    './responsiveList480.css',
+    './responsiveList1024.css',
+  ],
 })
 export class ListComponent {
   constructor(private api: SearchService, private router: Router) {
