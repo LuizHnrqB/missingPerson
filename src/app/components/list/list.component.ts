@@ -28,29 +28,16 @@ import { Router } from '@angular/router';
     NgOptimizedImage,
   ],
   templateUrl: './list.component.html',
-  styleUrls: [
-    './list.component.css',
-    './responsiveList480.css',
-    './responsiveList1024.css',
-  ],
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
   constructor(private api: SearchService, private router: Router) {
-    if (typeof localStorage !== 'undefined') {
-      this.perPage = +localStorage.getItem('perPage')! || 8;
-      this.pagina = +localStorage.getItem('pagina')! || 0;
-      this.idadeFinal = localStorage.getItem('idadeFinal') || '';
-      this.idadeInicial = localStorage.getItem('idadeInicial') || '';
-      this.nome = localStorage.getItem('nome') || '';
-      this.sexo = localStorage.getItem('sexo') || '';
-    } else {
-      this.perPage = 8;
-      this.pagina = 0;
-      this.idadeFinal = '';
-      this.idadeInicial = '';
-      this.nome = '';
-      this.sexo = '';
-    }
+    this.perPage = +localStorage.getItem('perPage')! || 8;
+    this.pagina = +localStorage.getItem('pagina')! || 0;
+    this.idadeFinal = localStorage.getItem('idadeFinal') || '';
+    this.idadeInicial = localStorage.getItem('idadeInicial') || '';
+    this.nome = localStorage.getItem('nome') || '';
+    this.sexo = localStorage.getItem('sexo') || '';
   }
   sexoMasculino: boolean = false;
   sexoFeminino: boolean = false;
@@ -62,14 +49,17 @@ export class ListComponent {
   sexo: string = '';
   perPage: number = 8;
   pagina: number = 0;
+  maxPage: number = 47;
 
   ngOnInit(): void {
     this.buscarPessoas();
   }
 
   passarPagina(): void {
-    this.pagina = this.pagina + 1;
-    this.buscarPessoas();
+    if (this.pagina < this.maxPage) {
+      this.pagina = this.pagina + 1;
+      this.buscarPessoas();
+    }
   }
   voltarPagina(): void {
     this.pagina = this.pagina - 1;
@@ -77,16 +67,21 @@ export class ListComponent {
   }
 
   passarPagina10(): void {
-    this.pagina = this.pagina + 10;
-    this.buscarPessoas();
+    if (this.pagina <= this.maxPage - 10) {
+      this.pagina = this.pagina + 10;
+      this.buscarPessoas();
+    }
   }
   voltarPagina10(): void {
     this.pagina = this.pagina - 10;
+    if (this.pagina < 0) {
+      this.pagina = 0;
+    }
     this.buscarPessoas();
   }
   getPageNumbers(): number[] {
     const start = Math.max(0, this.pagina - 3);
-    const end = Math.min(start + 6, 99);
+    const end = Math.min(start + 6, this.maxPage);
 
     return Array.from({ length: end - start + 1 }, (_, index) => start + index);
   }
@@ -97,6 +92,9 @@ export class ListComponent {
   setPagina(page: number): void {
     this.pagina = page;
     this.buscarPessoas();
+    if (!this.data.length) {
+      this.maxPage = this.pagina;
+    }
   }
   buscarPessoas(): void {
     this.api
@@ -111,6 +109,7 @@ export class ListComponent {
       .subscribe(
         (response) => {
           this.data = response.content;
+          console.log(this.data);
           localStorage.setItem('perPage', this.perPage.toString());
           localStorage.setItem('pagina', this.pagina.toString());
           localStorage.setItem('idadeFinal', this.idadeFinal);
