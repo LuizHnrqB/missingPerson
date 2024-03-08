@@ -8,7 +8,11 @@
 <div class="listWrapper">
   <div class="inputWrapper">
     <h2 class="pesquisa">Pesquise e filtre esta página</h2>
-    <form class="formWrapper" #filterForm="ngForm" (ngSubmit)="buscarPessoas()">
+    <form
+      class="formWrapper"
+      #filterForm="ngForm"
+      (ngSubmit)="buscarPessoasFiltro()"
+    >
       <mat-form-field class="formField">
         <input matInput placeholder="Nome" [(ngModel)]="nome" name="nome" />
       </mat-form-field>

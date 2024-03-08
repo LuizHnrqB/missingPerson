@@ -53,28 +53,30 @@ export class ListComponent {
   sexo: string = '';
   perPage: number = 8;
   pagina: number = 0;
-  maxPage: number = 47;
+  maxPage: number = 95;
 
   ngOnInit(): void {
     this.buscarPessoas();
   }
 
   passarPagina(): void {
-    if (this.pagina < this.maxPage) {
-      this.pagina = this.pagina + 1;
-      this.buscarPessoas();
-    }
+    this.pagina = this.pagina + 1;
+    this.buscarPessoas();
   }
   voltarPagina(): void {
-    this.pagina = this.pagina - 1;
+    if (this.pagina >= 0) {
+      this.pagina = this.pagina - 1;
+    }
     this.buscarPessoas();
   }
 
   passarPagina10(): void {
-    if (this.pagina <= this.maxPage - 10) {
+    if (this.maxPage - this.pagina <= 10) {
+      this.pagina = 95;
+    } else {
       this.pagina = this.pagina + 10;
-      this.buscarPessoas();
     }
+    this.buscarPessoas();
   }
   voltarPagina10(): void {
     this.pagina = this.pagina - 10;
@@ -96,15 +98,38 @@ export class ListComponent {
   setPagina(page: number): void {
     this.pagina = page;
     this.buscarPessoas();
-    if (!this.data.length) {
-      this.maxPage = this.pagina;
-    }
   }
   buscarPessoas(): void {
     this.api
       .getPessoas(
         this.perPage,
         this.pagina,
+        this.idadeFinal,
+        this.idadeInicial,
+        this.nome,
+        this.sexo
+      )
+      .subscribe(
+        (response) => {
+          this.data = response.content;
+          console.log(this.data);
+          localStorage.setItem('perPage', this.perPage.toString());
+          localStorage.setItem('pagina', this.pagina.toString());
+          localStorage.setItem('idadeFinal', this.idadeFinal);
+          localStorage.setItem('idadeInicial', this.idadeInicial);
+          localStorage.setItem('nome', this.nome);
+          localStorage.setItem('sexo', this.sexo);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+  buscarPessoasFiltro(): void {
+    this.api
+      .getPessoas(
+        this.perPage,
+        (this.pagina = 0),
         this.idadeFinal,
         this.idadeInicial,
         this.nome,
