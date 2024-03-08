@@ -4,8 +4,8 @@
     color: white;
     display: flex;
     flex-direction: column;
-    width: 95%;
-    height: 80%;
+    width: 98%;
+    height: 87%;
     box-shadow: 4px 4px 4px 4px #00000040;
     background-color: rgb(0, 0, 0);
     margin: auto;
@@ -13,7 +13,6 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 0.5rem;
   }
 
   .textWrapper {
@@ -100,8 +99,8 @@
   }
 
   .buttonContainer {
-    position: relative;
-    top: 75%;
+    position: fixed;
+    top: 79%;
     width: 95%;
   }
 }
