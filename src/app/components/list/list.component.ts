@@ -60,8 +60,13 @@ export class ListComponent {
   }
 
   passarPagina(): void {
+    let OldPagina = this.pagina;
     this.pagina = this.pagina + 1;
     this.buscarPessoas();
+    if (!this.data.length) {
+      this.pagina = OldPagina;
+      this.buscarPessoas();
+    }
   }
   voltarPagina(): void {
     if (this.pagina >= 0) {
@@ -96,8 +101,15 @@ export class ListComponent {
     this.buscarPessoas();
   }
   setPagina(page: number): void {
+    let OldPagina = this.pagina;
     this.pagina = page;
     this.buscarPessoas();
+    if (!this.data.length) {
+      page = OldPagina;
+      this.pagina = OldPagina;
+      console.log(this.pagina);
+      this.buscarPessoas();
+    }
   }
   buscarPessoas(): void {
     this.api
@@ -112,7 +124,6 @@ export class ListComponent {
       .subscribe(
         (response) => {
           this.data = response.content;
-          console.log(this.data);
           localStorage.setItem('perPage', this.perPage.toString());
           localStorage.setItem('pagina', this.pagina.toString());
           localStorage.setItem('idadeFinal', this.idadeFinal);
