@@ -1,0 +1,161 @@
+<div class="banner">
+  <div class="blackLine"></div>
+  <img ngSrc="assets/banner.png" width="2000" height="100" />
+  <h1 class="h1">Você viu alguma</h1>
+  <h1 class="h2">dessas pessoas?</h1>
+</div>
+
+<div class="listWrapper">
+  <div class="inputWrapper">
+    <h2 class="pesquisa">Pesquise e filtre esta página</h2>
+    <form class="formWrapper" #filterForm="ngForm" (ngSubmit)="buscarPessoas()">
+      <mat-form-field class="formField">
+        <input
+          matInput
+          placeholder="Idade Inicial"
+          [(ngModel)]="idadeInicial"
+          name="idadeInicial"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="formField">
+        <input
+          matInput
+          placeholder="Idade Final"
+          [(ngModel)]="idadeFinal"
+          name="idadeFinal"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="formField">
+        <input matInput placeholder="Nome" [(ngModel)]="nome" name="nome" />
+      </mat-form-field>
+      <div class="checkBoxContainer">
+        <mat-checkbox
+          class="checkBox"
+          style="margin-top: 5px"
+          [(ngModel)]="sexoMasculino"
+          name="sexoMasculino"
+          (change)="handleCheckboxChange()"
+        >
+          Masculino
+        </mat-checkbox>
+
+        <mat-checkbox
+          class="checkBox"
+          style="margin-top: 5px"
+          [(ngModel)]="sexoFeminino"
+          name="sexoFeminino"
+          (change)="handleCheckboxChange()"
+        >
+          Feminino
+        </mat-checkbox>
+      </div>
+      <div class="buttonDiv">
+        <button class="submitButton" mat-raised-button type="submit">
+          Aplicar Filtros
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <div class="cardWrapper">
+    <div *ngFor="let item of data" class="card">
+      <button (click)="redirectToDetails(item.id)" class="card">
+        <div class="imageWrapper">
+          <img
+            class="avatar"
+            *ngIf="item.urlFoto"
+            [src]="item.urlFoto"
+            alt="Photo"
+          />
+          <img
+            class="avatar"
+            *ngIf="!item.urlFoto"
+            src="https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg"
+            alt="Photo"
+          />
+        </div>
+        <div class="textHolder">
+          <h3 class="textNome">{{ item.nome }}</h3>
+          <h4 class="textInfo">
+            {{ item.idade }} |
+            {{ item.ultimaOcorrencia.localDesaparecimentoConcat }}
+          </h4>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="pageSelector">
+    <button
+      class="passarButton"
+      mat-button
+      (click)="voltarPagina10()"
+      [disabled]="pagina === 1"
+    >
+      <<<
+    </button>
+    <button
+      class="passarButton"
+      mat-button
+      (click)="voltarPagina()"
+      [disabled]="pagina === 1"
+    >
+      <
+    </button>
+
+    <div class="pageNumber" *ngFor="let pageNum of getPageNumbers()">
+      <button
+        class="paginaNumber"
+        *ngIf="pagina != pageNum"
+        mat-button
+        (click)="setPagina(pageNum)"
+      >
+        {{ pageNum }}
+      </button>
+      <button
+        class="paginaNumber"
+        *ngIf="pagina === pageNum"
+        mat-button
+        (click)="setPagina(pageNum)"
+        style="
+          background-color: rgba(78, 170, 254, 0.7);
+          color: #fff;
+          font-weight: bold;
+        "
+      >
+        {{ pageNum }}
+      </button>
+    </div>
+
+    <button
+      class="passarButton"
+      mat-button
+      (click)="passarPagina()"
+      [disabled]="data?.length < perPage"
+    >
+      >
+    </button>
+    <button
+      class="passarButton"
+      mat-button
+      (click)="passarPagina10()"
+      [disabled]="data?.length < perPage"
+    >
+      >>>
+    </button>
+  </div>
+  <div class="perPageSelect">
+    <mat-form-field>
+      <mat-label>Itens por página</mat-label>
+      <mat-select
+        (selectionChange)="trocarPerPage($event.value)"
+        name="perPage"
+      >
+        <mat-option value="8">8</mat-option>
+        <mat-option value="16">16</mat-option>
+        <mat-option value="24">24</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

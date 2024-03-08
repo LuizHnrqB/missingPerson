@@ -1,0 +1,8 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background: url("../assets/crowd.jpg") center center fixed;
+  background-size: cover;
+  overflow: hidden; /* Optional: hide any overflow content */
+}

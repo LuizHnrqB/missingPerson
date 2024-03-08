@@ -1,0 +1,63 @@
+<div class="contentWrapper">
+  <div class="missingWrapper">
+    <div class="imageWrapper">
+      <img
+        class="avatar"
+        *ngIf="idData.urlFoto"
+        [src]="idData.urlFoto"
+        alt="Photo"
+      />
+      <img
+        class="avatar"
+        *ngIf="!idData.urlFoto"
+        src="https://thinksport.com.au/wp-content/uploads/2020/01/avatar-.jpg"
+        alt="Photo"
+      />
+    </div>
+    <div class="headerContainer">
+      <h1 style="color: #4eaafe; font-weight: 600; font-size: 2rem">
+        {{ idData.nome }}
+      </h1>
+      <h2 style="font-weight: 500; font-size: 1rem">
+        {{ idData.idade }} / {{ idData.sexo }}
+      </h2>
+      <h3 style="font-weight: 500; font-size: 1rem">
+        Visto pela ultima vez em:
+        {{ idData.ultimaOcorrencia.localDesaparecimentoConcat }}
+      </h3>
+      <h4>
+        No dia:
+        {{ idData.ultimaOcorrencia.dtDesaparecimento | date : "dd/MM/yyyy" }}
+      </h4>
+
+      <div>
+        <h1 style="font-weight: 500; font-size: 1rem">
+          Ajude a encontrar essa pessoa:
+        </h1>
+        <share-buttons
+          theme="modern-dark"
+          [include]="['facebook', 'reddit', 'twitter', 'whatsapp']"
+          [showIcon]="true"
+          [showText]="false"
+          [image]="idData.urlFoto"
+          description="Compartilhe e ajuda a encontrar-lo(a): {{
+            idData.nome
+          }},{{ idData.idade }} anos, visto(a) pela ultima vez em: {{
+            idData.ultimaOcorrencia.localDesaparecimentoConcat
+          }}. Mais detalhes em:  "
+          class="pt-5"
+        >
+        </share-buttons>
+      </div>
+      <p class="paragrafo">
+        Sabe onde esta pessoa está?<b> Avise a Polícia Judiciária Civil</b>
+      </p>
+      <p>(65) 3613-5656 / 3613-5667 / 3613-5698 / 3613-5647</p>
+    </div>
+  </div>
+  <div class="buttonContainer">
+    <button (click)="voltarHome()" class="voltarButton">
+      < Voltar para lista
+    </button>
+  </div>
+</div>
