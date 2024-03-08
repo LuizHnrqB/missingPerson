@@ -119,7 +119,8 @@
     color: white;
     position: relative;
     top: -75%;
-    left: -66%;
+    left: -95%;
+
     font-size: 2rem;
     padding: 0.7rem;
     margin-bottom: 0;
@@ -130,7 +131,7 @@
     color: white;
     position: relative;
     top: -75%;
-    left: -66%;
+    left: -95%;
     font-size: 2rem;
     padding: 0.7rem;
     margin-top: 0;
@@ -148,7 +149,8 @@
   }
 
   .cardWrapper {
-    width: 60%;
+    height: 50%;
+    width: 85%;
     margin: 0 auto;
     display: flex;
     border-radius: 0.5rem;
