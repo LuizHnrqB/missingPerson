@@ -90,6 +90,7 @@
     <button
       class="passarButton"
       mat-button
+      style="cursor: pointer"
       (click)="voltarPagina10()"
       [disabled]="pagina === 1"
     >
@@ -97,6 +98,7 @@
     </button>
     <button
       class="passarButton"
+      style="cursor: pointer"
       mat-button
       (click)="voltarPagina()"
       [disabled]="pagina === 1"
@@ -108,6 +110,7 @@
       <button
         class="paginaNumber"
         *ngIf="pagina != pageNum"
+        style="cursor: pointer"
         mat-button
         (click)="setPagina(pageNum)"
       >
@@ -122,6 +125,7 @@
           background-color: rgba(78, 170, 254, 0.7);
           color: #fff;
           font-weight: bold;
+          cursor: pointer;
         "
       >
         {{ pageNum }}
@@ -131,6 +135,7 @@
     <button
       class="passarButton"
       mat-button
+      style="cursor: pointer"
       (click)="passarPagina()"
       [disabled]="data?.length < perPage"
     >
@@ -139,6 +144,7 @@
     <button
       class="passarButton"
       mat-button
+      style="cursor: pointer"
       (click)="passarPagina10()"
       [disabled]="data?.length < perPage"
     >
