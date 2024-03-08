@@ -1,4 +1,4 @@
-@media only screen and (min-width: 481px) and (max-width: 1366px) {
+@media only screen and (min-width: 481px) and (max-width: 1440px) {
   .card {
     width: 25%;
     margin: 1%;
@@ -10,6 +10,7 @@
     border: 0;
     background-color: transparent;
   }
+
   .inputWrapper {
     display: grid;
     flex-direction: row;
