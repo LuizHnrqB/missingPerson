@@ -111,7 +111,13 @@
     </button>
 
     <div class="pageNumber" *ngFor="let pageNum of getPageNumbers()">
-      <button class="paginaNumber" *ngIf="pagina != pageNum" mat-button>
+      <button
+        (click)="setPagina(pageNum)"
+        style="cursor: pointer"
+        class="paginaNumber"
+        *ngIf="pagina != pageNum"
+        mat-button
+      >
         {{ pageNum }}
       </button>
       <button
