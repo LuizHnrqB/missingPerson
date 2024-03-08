@@ -15,16 +15,6 @@
     transform: translate(-50%, -50%);
   }
 
-  .textWrapper {
-    height: 100%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
   .subTitle {
     padding-right: 1rem;
     font-size: 1rem;
@@ -48,7 +38,10 @@
     width: 100%;
     height: 100%;
   }
-
+  .paragrafos {
+    position: fixed;
+    top: 86%;
+  }
   .headerContainer {
     padding-left: 1rem;
     padding-top: 1rem;
@@ -104,5 +97,6 @@
   .buttonContainer {
     position: fixed;
     width: 95%;
+    top: 78%;
   }
 }
