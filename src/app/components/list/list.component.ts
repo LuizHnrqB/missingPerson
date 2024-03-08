@@ -32,12 +32,21 @@ import { Router } from '@angular/router';
 })
 export class ListComponent {
   constructor(private api: SearchService, private router: Router) {
-    this.perPage = +localStorage.getItem('perPage')! || 8;
-    this.pagina = +localStorage.getItem('pagina')! || 0;
-    this.idadeFinal = localStorage.getItem('idadeFinal') || '';
-    this.idadeInicial = localStorage.getItem('idadeInicial') || '';
-    this.nome = localStorage.getItem('nome') || '';
-    this.sexo = localStorage.getItem('sexo') || '';
+    if (typeof localStorage !== 'undefined') {
+      this.perPage = +localStorage.getItem('perPage')! || 8;
+      this.pagina = +localStorage.getItem('pagina')! || 0;
+      this.idadeFinal = localStorage.getItem('idadeFinal') || '';
+      this.idadeInicial = localStorage.getItem('idadeInicial') || '';
+      this.nome = localStorage.getItem('nome') || '';
+      this.sexo = localStorage.getItem('sexo') || '';
+    } else {
+      this.perPage = 8;
+      this.pagina = 0;
+      this.idadeFinal = '';
+      this.idadeInicial = '';
+      this.nome = '';
+      this.sexo = '';
+    }
   }
   sexoMasculino: boolean = false;
   sexoFeminino: boolean = false;
