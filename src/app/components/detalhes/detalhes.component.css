@@ -176,11 +176,12 @@ html {
   .paragrafo {
     font-size: 0.9rem;
     margin-top: 1rem;
-    margin-bottom: -1rem;
+    margin-bottom: -0.3rem;
     width: 100%;
     font-weight: 300;
   }
-  .paragrafo b {
+  .paragrafo2 {
+    width: 95%;
     font-weight: 900;
   }
   .voltarButton {
@@ -189,9 +190,10 @@ html {
     color: #0085ff;
     border-radius: 0.6rem;
     cursor: pointer;
+    width: 100%;
     display: flex;
-    left: 50%;
-    top: 80%;
+    top: 5%;
+    left: 0;
   }
   .contentWrapper {
     width: 100vw;
@@ -202,6 +204,9 @@ html {
   }
 
   .buttonContainer {
+    position: relative;
+    top: 75%;
+    width: 95%;
   }
 }
 
